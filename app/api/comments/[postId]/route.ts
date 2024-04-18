@@ -1,9 +1,8 @@
-import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 import { prisma as client } from "@/db/db";
 
 export async function GET(
-  req: NextApiRequest,
+  req: Request,
   { params }: { params: { postId: string } }
 ) {
   const { postId } = params;

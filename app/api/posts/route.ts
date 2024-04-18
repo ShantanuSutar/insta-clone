@@ -1,6 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
 import { prisma as client } from "@/db/db";
-import { NextApiRequest } from "next";
 
 export async function POST(req: Request) {
   const { authorId, imageUrl, description } = await req.json();
@@ -52,7 +51,7 @@ export async function POST(req: Request) {
 }
 
 export async function GET(
-  req: NextApiRequest,
+  req: Request,
   { params }: { params: { postId: string } }
 ) {
   const postsWithTotalLikesAndUser = await client.post.findMany({

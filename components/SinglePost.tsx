@@ -12,23 +12,11 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { FaHeart } from "react-icons/fa";
 import CommentModal from "./CommentModal";
+import { Post } from "./MyPosts";
 
 interface SinglePostProps {
-  id: string;
-  imageUrl: string;
-  description: string;
-  createdAt: Date;
-  authorId: string;
-  likes: any[];
-  author: {
-    id: string;
-    username: string;
-    email: string;
-    password: string;
-    createdAt: Date;
-  };
-  totalLikes: number;
-  authorName: string;
+  key: string;
+  post: Post;
 }
 
 export interface Comment {
@@ -46,7 +34,7 @@ export interface Comment {
   };
 }
 
-export const SinglePost = ({ post }: { post: SinglePostProps }) => {
+export const SinglePost = ({ post, key }: SinglePostProps) => {
   const { description, imageUrl, authorName, totalLikes } = post;
 
   const [showCommentModal, setShowCommentModal] = React.useState(false);
@@ -60,7 +48,7 @@ export const SinglePost = ({ post }: { post: SinglePostProps }) => {
 
   if (status === "loading") return <div>Loading ...</div>;
 
-  const { id } = session?.data?.user;
+  const { id }: any = session?.data?.user;
 
   const handleLike = async () => {
     await axios.post("/api/likes", {

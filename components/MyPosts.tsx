@@ -16,6 +16,11 @@ import CommentModal from "./CommentModal";
 import { Comment } from "./SinglePost";
 
 interface MyPostsProps {
+  key: string;
+  post: Post;
+}
+
+export interface Post {
   id: string;
   imageUrl: string;
   description: string;
@@ -33,10 +38,11 @@ interface MyPostsProps {
   authorName: string;
 }
 
-const MyPosts = ({ post }: { post: MyPostsProps }) => {
+const MyPosts = ({ post, key }: MyPostsProps) => {
   const { description, imageUrl, authorName, totalLikes } = post;
   const session = useSession();
-  const id = session?.data?.user?.id;
+  const { id }: any = session?.data?.user;
+
   const router = useRouter();
   const [showCommentModal, setShowCommentModal] = React.useState(false);
   const [comments, setComments] = useState<Comment[]>([]);

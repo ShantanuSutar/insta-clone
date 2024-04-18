@@ -8,7 +8,7 @@ const UserAccount = () => {
 
   if (status === "loading") return <div>Loading ...</div>;
 
-  const { id, username } = session?.data?.user;
+  const { id, username }: any = session?.data?.user;
 
   return <span className=" font-semibold">{username}</span>;
 };

@@ -9,7 +9,7 @@ const UserInfo = () => {
   if (status === "loading") return <div>Loading ...</div>;
 
   // const userId = session.data?.user?.id;
-  const { email, id, username } = session.data?.user;
+  const { email, id, username }: any = session.data?.user;
   return (
     <div className=" text-black">
       <p>Username: {username}</p>

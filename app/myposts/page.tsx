@@ -47,7 +47,10 @@ const page = async () => {
       <div className="  w-[60%] ">
         <div className=" flex  flex-col gap-10">
           {posts.map((post) => (
-            <MyPosts key={post.id} post={post} />
+            <MyPosts
+              key={post.id}
+              post={{ ...post, description: post.description || "" }}
+            />
           ))}
         </div>
       </div>

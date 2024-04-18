@@ -10,7 +10,8 @@ const NewPost = () => {
   const [description, setDescription] = useState("");
   const [error, setError] = useState("");
   const session = useSession();
-  const authorId = session.data?.user?.id;
+  const { id: authorId }: any = session?.data?.user;
+
   const router = useRouter();
 
   const handleSubmit = async (
